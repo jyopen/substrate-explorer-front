@@ -1,18 +1,23 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <table-list path="/v1/blocks" :columns="columns" :normal-params="{order:[['number','DESC']]}"/>
   </div>
 </template>
 
-<script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+<script lang="ts">
+import {ViewTypes} from "@/components/types";
+import {Component, Vue} from "vue-property-decorator";
+import TableList from "@/components/TableList.vue";
+import {TableOptions} from "@/components/types";
+import {Block} from "@/model";
 
-export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+@Component({components: {TableList}})
+export default class Home extends Vue {
+    public columns: TableOptions<Block>[] = [
+        {label: "区块高度", prop: "number"},
+        {label: "是否结束", prop: "finalized"},
+        {label: "时间", prop: "timestamp", type: ViewTypes.FRIENDLY_TIME},
+    ];
 }
+
 </script>
