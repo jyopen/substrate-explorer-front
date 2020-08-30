@@ -64,7 +64,7 @@ export default class TableList<M> extends Vue {
     private readonly handleData: ((params: any[]) => any[]) | undefined;
     @Prop({type: Array})
     private readonly columns: TableOptions<M>[] | undefined;
-    private fetchTimer: number | undefined;
+    private fetchTimer?: NodeJS.Timeout;
     private tableData: M[] = [];
     private loading = true;
     private total = 0;
@@ -123,20 +123,22 @@ export default class TableList<M> extends Vue {
     }
 
     mounted(): void {
-        if (this.timer) {
-            this.fetchTimer = setInterval(() => {
-                if (this.ruleForm.currentPage !== 1) {
-                    return;
-                }
-                this.loadData(false);
-            }, this.timer);
+        if (!this.timer) {
+            return;
         }
+        this.fetchTimer = setInterval(() => {
+            if (this.ruleForm.currentPage !== 1) {
+                return;
+            }
+            this.loadData(false);
+        }, this.timer);
     }
 
     beforeDestroy(): void {
-        if (this.timer) {
-            this.fetchTimer && clearInterval(this.fetchTimer);
+        if (!this.timer) {
+            return;
         }
+        this.fetchTimer && clearInterval(this.fetchTimer);
     }
 }
 </script>

@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import './plugins/element';
+import './plugins/hook';
 import './css/normal.styl';
 import './css/base.styl';
 import App from './App.vue';

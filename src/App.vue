@@ -2,7 +2,9 @@
   <div id="app">
     <common-header/>
     <div class="page content">
-      <router-view/>
+      <keep-alive>
+        <router-view/>
+      </keep-alive>
     </div>
     <common-footer/>
   </div>

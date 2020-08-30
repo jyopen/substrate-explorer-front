@@ -1,6 +1,5 @@
 import DEC from 'decimal.js';
 
-
 export function formatNumber(balance: string | number, decimal = 12, fixed?: number) {
     return new DEC(balance || '0').div(new DEC(10).pow(new DEC(decimal))).toFixed(fixed);
 }
@@ -20,7 +19,10 @@ export function toThousands(num: string | number, fix = 3) {
     );
 }
 
-export function formatBalance(balance: string | number, decimal = 12) {
+export function formatBalance(balance: string | number | undefined, decimal = 12) {
+    if (typeof balance === 'undefined') {
+        return '0';
+    }
     const fixed = Math.min(3, decimal);
     return toThousands(formatNumber(balance, decimal), fixed);
 }

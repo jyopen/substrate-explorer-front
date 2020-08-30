@@ -22,6 +22,7 @@
             {{$t('Accounts')}}
           </el-menu-item>
           <el-menu-item index="/blocks">{{$t('Blocks')}}</el-menu-item>
+          <el-menu-item index="/wallet">{{$t('Wallet')}}</el-menu-item>
           
           <el-submenu class="right" index="5">
             <template slot="title">{{$i18n.locale === 'en' ? 'English':'中文'}}</template>

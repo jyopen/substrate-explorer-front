@@ -13,6 +13,7 @@ const routes = [
     {path: '/validators', component: () => import('../views/Validators.vue')},
     {path: '/transactions', component: () => import('../views/Transactions.vue')},
     {path: '/accounts', component: () => import('../views/Accounts.vue')},
+    {path: '/wallet', component: () => import('../views/wallet/index.vue')},
     {path: '/404', component: () => import('../views/Page404.vue')},
     {path: '*', redirect: '/404'},
 ];

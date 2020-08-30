@@ -11,7 +11,7 @@ export default class FriendlyTime extends Vue {
     @Prop(Number)
     private readonly value: number | undefined;
     private timeNow = Date.now();
-    private timer: number | undefined;
+    private timer?: NodeJS.Timeout;
 
     get time() {
         return formatFriendlyTime(this.value!, this.timeNow);

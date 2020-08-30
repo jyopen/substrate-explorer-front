@@ -17,6 +17,11 @@ import {
     Tabs,
     TabPane,
     Link,
+    Select,
+    Option,
+    Form,
+    FormItem,
+    InputNumber,
 } from 'element-ui';
 
 
@@ -37,3 +42,8 @@ Vue.use(Upload);
 Vue.use(Tabs);
 Vue.use(TabPane);
 Vue.use(Link);
+Vue.use(Select);
+Vue.use(Option);
+Vue.use(Form);
+Vue.use(FormItem);
+Vue.use(InputNumber);
